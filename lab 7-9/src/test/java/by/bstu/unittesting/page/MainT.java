@@ -30,14 +30,14 @@ public class MainT extends AbstractPage {
         return this;
     }
 
-    public MainT openDelivery() {
+    public MainT NotebookButton() {
         WebElement deliveryButton = driver.findElement(By.xpath("//*[@id=\"2416\"]/a"));
         deliveryButton.click();
         logger.info("Asus opend");
         return this;
     }
 
-    public MainT openManDelivery() {
+    public MainT LogoButton() {
         WebElement openManDeliveryButton = driver.findElement(By.xpath("//*[@id=\"body-header\"]/div/div/div[2]/div[1]/a"));
         openManDeliveryButton.click();
         logger.info("Main logo click");

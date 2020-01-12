@@ -14,8 +14,8 @@ public class NotebookFind extends AbstractPage {
 
 
 
-    private static final By CALL_PHONE = By.xpath("//*[@id=\"2416\"]/a");
-    private static final By SUBMIT_DATA = By.xpath("//*[@id=\"content-inner-block\"]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div/div[1]/div[1]/div/ul/li[1]/a");
+    private static final By NOTEBOOK_FINDER = By.xpath("//*[@id=\"2416\"]/a");
+    private static final By ASUS_FINDER = By.xpath("//*[@id=\"content-inner-block\"]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div/div[1]/div[1]/div/ul/li[1]/a");
     private static final By ERROR_FIELD_LOCATION = By.xpath("//*[@id=\"catalog_goods_block\"]/div/div[1]/div[1]/div/div/div/div[3]/a");
 
     public NotebookFind(WebDriver driver) {
@@ -30,15 +30,15 @@ public class NotebookFind extends AbstractPage {
     }
 
 
-    public NotebookFind callPhoneClick() {
-        WebElement call = driver.findElement(CALL_PHONE);
+    public NotebookFind NotebookButton() {
+        WebElement call = driver.findElement(NOTEBOOK_FINDER);
         call.click();
         return this;
     }
 
 
-    public NotebookFind submitClick(){
-        driver.findElement(SUBMIT_DATA).click();
+    public NotebookFind AsusButton(){
+        driver.findElement(ASUS_FINDER).click();
         return this;
     }
 

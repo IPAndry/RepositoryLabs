@@ -32,7 +32,7 @@ public class Premium extends AbstractPage {
         return this;
     }
 
-    public Premium selectOrderStatusButton() throws InterruptedException {
+    public Premium GetPremiumButton() throws InterruptedException {
         WebElement statusButton = driver.findElement(By.xpath("/html/body/header/div/div/div[2]/ul/li[5]/a"));
         statusButton.click();
         logger.info("Clicked Premium button");

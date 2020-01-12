@@ -31,21 +31,21 @@ public class ShopCreate extends AbstractPage{
         return this;
     }
 
-    public ShopCreate selectOrderStatusButton() {
+    public ShopCreate CreateShopButton() {
         WebElement statusButton = driver.findElement(By.xpath("/html/body/header/div/div/div[1]/div[2]/ul/li[7]/a"));
         statusButton.click();
         logger.info("Clicked Premium button");
         return this;
     }
 
-    public ShopCreate selectOrderStatusButton1() {
+    public ShopCreate FullFormButton() {
         WebElement statusButton = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div/div/div/div/span/a"));
         statusButton.click();
         logger.info("Clicked Premium button");
         return this;
     }
 
-    public ShopCreate selectOrderStatusButton2() throws InterruptedException {
+    public ShopCreate SelectCheckbox() throws InterruptedException {
         WebElement statusButton = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div/div/form/div[6]/div/div/span/button"));
         statusButton.click();
         logger.info("Clicked Premium button");

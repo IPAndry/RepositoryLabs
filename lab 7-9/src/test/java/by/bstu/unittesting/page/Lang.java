@@ -33,7 +33,7 @@ public class Lang extends AbstractPage {
         return this;
     }
 
-    public Lang openPayment(){
+    public Lang UkrainianButton(){
         paymentButton.click();
         logger.info("Language changed");
         return this;

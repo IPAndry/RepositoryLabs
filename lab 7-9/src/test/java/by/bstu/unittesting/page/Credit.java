@@ -31,7 +31,7 @@ public class Credit extends AbstractPage {
         return this;
     }
 
-    public Credit openSales(){
+    public Credit GetCreditButton(){
         salesButton.click();
         logger.info("Credit was opened");
         return this;

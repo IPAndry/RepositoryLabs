@@ -31,7 +31,7 @@ public class Bonus extends AbstractPage {
         return this;
     }
 
-    public Bonus OpdBonus(){
+    public Bonus OpenBonus(){
         installmentButton.click();
         logger.info("Bonus opened");
         return this;

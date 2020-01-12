@@ -1,6 +1,6 @@
 package by.bstu.unittesting.page;
 
-import by.bstu.unittesting.model.Item;
+import by.bstu.unittesting.model.LoginModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -40,26 +40,26 @@ public class Login extends AbstractPage {
         return this;
     }
 
-    public Login searchClick() {
+    public Login LoginButton() {
         WebElement search = driver.findElement(By.xpath("//*[@id=\"header_user_menu_parent\"]/a"));
         search.click();
         logger.info("Click Login");
         return this;
     }
 
-    public Login search(Item item) {
+    public Login EmailField(LoginModel item) {
         search.sendKeys(item.getSearch());
         logger.info("Email input");
         return this;
     }
 
-    public Login GetItemOnPage(Item item) {
+    public Login PasswordField(LoginModel item) {
         search1.sendKeys(item.getSearch());
         logger.info("Password input");
         return this;
     }
 
-    public Login searchClick1() {
+    public Login EnterAccountButton() {
         WebElement search = driver.findElement(By.xpath("//*[@id=\"popup_signin\"]/div[1]/div[2]/div[1]/div[2]/div/span/button"));
         search.click();
         logger.info("Login button");

@@ -29,7 +29,7 @@ public class Empty extends AbstractPage {
         return this;
     }
 
-    public Empty sendMessage() {
+    public Empty CompareButton() {
         driver.findElement(SEND_MESSAGE).click();
         logger.info("Sravnenie empty");
         return this;

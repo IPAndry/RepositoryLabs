@@ -39,21 +39,21 @@ public class FullInfo extends AbstractPage {
         return this;
     }
 
-    public FullInfo selectOrderStatusButton() {
+    public FullInfo NotebookButton() {
         WebElement statusButton = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[1]/nav/div/ul/li[1]/a"));
         statusButton.click();
         logger.info("Clicked notebooks button and redirect on page notebooks");
         return this;
     }
 
-    public FullInfo okButton(){
+    public FullInfo AsusButton(){
         WebElement button = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div/div[1]/div[1]/div/ul/li[1]/a"));
         button.click();
         logger.info("Clicked ASUS button and redirect on page ASUS");
         return this;
     }
 
-    public FullInfo okButton1() throws InterruptedException {
+    public FullInfo ListButton() throws InterruptedException {
         WebElement button = driver.findElement(By.xpath("/html/body/div[4]/div/div[2]/div[1]/div/div[1]/div/div/div/div[1]/div/div[2]/div[2]/a"));
         button.click();
         logger.info("Clicked list button");

@@ -1,12 +1,12 @@
 package by.bstu.unittesting.model;
 
-public class Item {
+public class LoginModel {
 
     private String name;
 
     private String search;
 
-    public Item (String testDataSearch){
+    public LoginModel(String testDataSearch){
         this.search = testDataSearch;
     }
 

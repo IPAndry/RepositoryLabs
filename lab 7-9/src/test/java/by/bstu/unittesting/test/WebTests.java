@@ -1,14 +1,9 @@
 package by.bstu.unittesting.test;
 
-import by.bstu.unittesting.model.Item;
-import by.bstu.unittesting.model.Order;
-import by.bstu.unittesting.model.Promocode;
+import by.bstu.unittesting.model.LoginModel;
 import by.bstu.unittesting.page.*;
-import by.bstu.unittesting.service.ItemCreator;
-import by.bstu.unittesting.service.OrderCreator;
-import by.bstu.unittesting.service.PromoCreator;
+import by.bstu.unittesting.service.LoginField;
 import org.testng.annotations.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -18,11 +13,10 @@ public class WebTests extends GeneralConfig
     @Test
     public void ShopCreateTest() throws InterruptedException
     {
-        Promocode testPromo = PromoCreator.createPromoWithWrongNumber();
         String errorText = new ShopCreate(driver).openPage()
-                .selectOrderStatusButton()
-                .selectOrderStatusButton1()
-                .selectOrderStatusButton2()
+                .CreateShopButton()
+                .FullFormButton()
+                .SelectCheckbox()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Есть ли у Вас интернет магазин? *")));
     }
@@ -30,11 +24,10 @@ public class WebTests extends GeneralConfig
     @Test
     public void FullInfoTest() throws InterruptedException
     {
-        Order testOrder = OrderCreator.FullInfoTest();
         String errorText = new FullInfo(driver).openPage()
-                .selectOrderStatusButton()
-                .okButton()
-                .okButton1()
+                .NotebookButton()
+                .AsusButton()
+                .ListButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("")));
     }
@@ -42,9 +35,8 @@ public class WebTests extends GeneralConfig
     @Test
     public void PremiumTest() throws InterruptedException
     {
-        Order testOrder = OrderCreator.createOrderWithWrongNumber();
         String errorText = new Premium(driver).openPage()
-                .selectOrderStatusButton()
+                .GetPremiumButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Оплатить подписку")));
     }
@@ -53,7 +45,7 @@ public class WebTests extends GeneralConfig
     public void CreditTest()
     {
         String errorText = new Credit(driver).openPage()
-                .openSales()
+                .GetCreditButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Покупка в кредит")));
     }
@@ -62,7 +54,7 @@ public class WebTests extends GeneralConfig
     public void BonusTest()
     {
         String errorText = new Bonus(driver).OpBonus()
-                .OpdBonus()
+                .OpenBonus()
                 .getErrorText();
         assertThat(errorText, is(equalTo("")));
     }
@@ -71,8 +63,8 @@ public class WebTests extends GeneralConfig
     public void MainTest()
     {
         String errorText = new MainT(driver).openPage()
-                .openDelivery()
-                .openManDelivery()
+                .NotebookButton()
+                .LogoButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Добро пожаловать!")));
     }
@@ -81,8 +73,8 @@ public class WebTests extends GeneralConfig
     public void NotebookFindTest()
     {
         String errorText = new NotebookFind(driver).openPage()
-                .callPhoneClick()
-                .submitClick()
+                .NotebookButton()
+                .AsusButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Ноутбук Asus ROG Strix G531GT-BQ132 (90NR01L3-M02530) Black Суперцена!!!")));
     }
@@ -90,12 +82,12 @@ public class WebTests extends GeneralConfig
     @Test
     public void LoginTest()
     {
-        Item item = ItemCreator.createViaSearch();
+        LoginModel item = LoginField.createViaSearch();
         String errorText = new Login(driver).openPage()
-                .searchClick()
-                .search(item)
-                .GetItemOnPage(item)
-                .searchClick1()
+                .LoginButton()
+                .EmailField(item)
+                .PasswordField(item)
+                .EnterAccountButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("")));
     }
@@ -104,7 +96,7 @@ public class WebTests extends GeneralConfig
     public void EmptyTest()
     {
         String errorText = new Empty(driver).openPage()
-                .sendMessage()
+                .CompareButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Нет товаров в сравнении")));
     }
@@ -113,7 +105,7 @@ public class WebTests extends GeneralConfig
     public void LangTest()
     {
         String errorText = new Lang(driver).openPage()
-                .openPayment()
+                .UkrainianButton()
                 .getErrorText();
         assertThat(errorText, is(equalTo("Ласкаво просимо!")));
     }
