@@ -7,7 +7,7 @@ public class OrderCreator {
     public static final String TESTDATA_ORDER_NUMBER = "testdata.order.number";
     public static final String TESTDATA_ORDER_NUMBER_WRONG = "testdata.order.number.wrong";
 
-    public static Order createOrderWithAllFieldsFromProperty() {
+    public static Order FullInfoTest() {
         return new Order(TestDataReader.getTestData(TESTDATA_ORDER_NUMBER));
     }
 

@@ -2,12 +2,10 @@ package by.bstu.unittesting.test;
 
 import by.bstu.unittesting.model.Item;
 import by.bstu.unittesting.model.Order;
-import by.bstu.unittesting.model.Phone;
 import by.bstu.unittesting.model.Promocode;
 import by.bstu.unittesting.page.*;
 import by.bstu.unittesting.service.ItemCreator;
 import by.bstu.unittesting.service.OrderCreator;
-import by.bstu.unittesting.service.PhoneCreator;
 import by.bstu.unittesting.service.PromoCreator;
 import org.testng.annotations.Test;
 
@@ -15,143 +13,109 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class WebTests extends GeneralConfig {
-
-
-    private static final String ALPHABET_PAGE_ERROR_TEXT = "Поле Номер заказа должно содержать только цифры.";
-    private static final String NUMBER_PAGE_ERROR_TEXT = "Возможно, Вы ошиблись в номере заказа?";
-    private static final String PROMO_PAGE_ERROR_TEXT = "Такого промокода не существует";
-
-
+public class WebTests extends GeneralConfig
+{
     @Test
-    public void testWrongPromo() throws InterruptedException {
-
-
+    public void ShopCreateTest() throws InterruptedException
+    {
         Promocode testPromo = PromoCreator.createPromoWithWrongNumber();
-        String errorText = new IncorrectPromoPage(driver).openPage()
+        String errorText = new ShopCreate(driver).openPage()
                 .selectOrderStatusButton()
                 .selectOrderStatusButton1()
                 .selectOrderStatusButton2()
                 .getErrorText();
-
         assertThat(errorText, is(equalTo("Есть ли у Вас интернет магазин? *")));
-
     }
 
     @Test
-    public void testAlphabetInNumberField() throws InterruptedException {
-
-
-        Order testOrder = OrderCreator.createOrderWithAllFieldsFromProperty();
-
-        String errorText = new OrderPage(driver).openPage()
+    public void FullInfoTest() throws InterruptedException
+    {
+        Order testOrder = OrderCreator.FullInfoTest();
+        String errorText = new FullInfo(driver).openPage()
                 .selectOrderStatusButton()
                 .okButton()
                 .okButton1()
                 .getErrorText();
-
         assertThat(errorText, is(equalTo("")));
-
     }
 
     @Test
-    public void testIncorrectOrder() throws InterruptedException {
-
-
+    public void PremiumTest() throws InterruptedException
+    {
         Order testOrder = OrderCreator.createOrderWithWrongNumber();
-
-        String errorText = new IncorrectOrderPage(driver).openPage()
+        String errorText = new Premium(driver).openPage()
                 .selectOrderStatusButton()
                 .getErrorText();
-
         assertThat(errorText, is(equalTo("Оплатить подписку")));
-
     }
 
     @Test
-    public void testSales() {
-
-        String errorText = new SalesPage(driver).openPage()
+    public void CreditTest()
+    {
+        String errorText = new Credit(driver).openPage()
                 .openSales()
-
                 .getErrorText();
-
         assertThat(errorText, is(equalTo("Покупка в кредит")));
-
     }
 
     @Test
-    public void testInstallment() {
-
-        String errorText = new InstallmentPage(driver).openPage()
-                .openInstallment()
+    public void BonusTest()
+    {
+        String errorText = new Bonus(driver).OpBonus()
+                .OpdBonus()
                 .getErrorText();
-
         assertThat(errorText, is(equalTo("")));
-
     }
 
-
     @Test
-    public void testDeliveryCost() {
-
-        String errorText = new DeliveryPage(driver).openPage()
+    public void MainTest()
+    {
+        String errorText = new MainT(driver).openPage()
                 .openDelivery()
                 .openManDelivery()
                 .getErrorText();
-
-        assertThat(errorText, is(equalTo("Регистрация")));
-
+        assertThat(errorText, is(equalTo("Добро пожаловать!")));
     }
 
     @Test
-    public void testIncorrectPhone() {
-
-        Phone testPhone = PhoneCreator.createPhoneWithWrongNumber();
-        String errorText = new CallPhonePage(driver).openPage()
+    public void NotebookFindTest()
+    {
+        String errorText = new NotebookFind(driver).openPage()
                 .callPhoneClick()
                 .submitClick()
                 .getErrorText();
-
-        assertThat(errorText, is(equalTo(" Ноутбук Asus ROG Strix G531GT-BQ027 (90NR01L3-M02610) Black Суперцена!!! ")));
-
+        assertThat(errorText, is(equalTo("Ноутбук Asus ROG Strix G531GT-BQ132 (90NR01L3-M02530) Black Суперцена!!!")));
     }
 
     @Test
-    public void testGraver() {
-
+    public void LoginTest()
+    {
         Item item = ItemCreator.createViaSearch();
-        String errorText = new SearchGraver(driver).openPage()
-                .search(item)
+        String errorText = new Login(driver).openPage()
                 .searchClick()
+                .search(item)
                 .GetItemOnPage(item)
+                .searchClick1()
                 .getErrorText();
-
-
-        assertThat(errorText, is(equalTo(item.getName())));
+        assertThat(errorText, is(equalTo("")));
     }
 
     @Test
-    public void testEnteringEmptyMessage() {
-
-        Phone testPhone = PhoneCreator.createPhoneWithEmptyNumber();
-        String errorText = new EmptyMessagePage(driver).openPage()
+    public void EmptyTest()
+    {
+        String errorText = new Empty(driver).openPage()
                 .sendMessage()
-                .typeOrigin()
                 .getErrorText();
-
-        assertThat(errorText, is(equalTo("Поле \"Сообщение\" обязательно для заполнения.\nДолжно быть указано хотя бы что-то одно: телефон и/или email.")));
+        assertThat(errorText, is(equalTo("Нет товаров в сравнении")));
     }
 
     @Test
-    public void testRubbles() {
-
-        String errorText = new PaymentPage(driver).openPage()
+    public void LangTest()
+    {
+        String errorText = new Lang(driver).openPage()
                 .openPayment()
                 .getErrorText();
-
-        assertThat(errorText, is(equalTo("Зв'язок із соціальними мережами")));
-
+        assertThat(errorText, is(equalTo("Ласкаво просимо!")));
     }
 
 
