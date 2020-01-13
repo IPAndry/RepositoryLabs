@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,14 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 public class Premium extends AbstractPage {
 
     private final Logger logger = LogManager.getLogger(Premium.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
-    @FindBy(xpath = "/html/body/div[3]/div/div[2]/div[2]/div/div[4]/div/div[1]/div[2]/button")
+    @FindBy(xpath = "//button[@name='sub-buy-one-click']")
     private WebElement errorFieldLocator;
 
     public Premium(WebDriver driver) {
@@ -32,8 +29,8 @@ public class Premium extends AbstractPage {
         return this;
     }
 
-    public Premium GetPremiumButton() throws InterruptedException {
-        WebElement statusButton = driver.findElement(By.xpath("/html/body/header/div/div/div[2]/ul/li[5]/a"));
+    public Premium getPremiumButton() throws InterruptedException {
+        WebElement statusButton = driver.findElement(By.xpath("//*[@href='https://rozetka.com.ua/premium/' and @class='hub-i-link sprite-side whitelink']   "));
         statusButton.click();
         logger.info("Clicked Premium button");
         Thread.sleep(5000);
@@ -42,7 +39,7 @@ public class Premium extends AbstractPage {
 
     public String getErrorText() {
         WebElement test = new WebDriverWait(driver, SECONDS_TO_LOAD)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath ("/html/body/div[3]/div/div[2]/div[2]/div/div[4]/div/div[1]/div[2]/button")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath ("//button[@name='sub-buy-one-click']")));
 
         return errorFieldLocator.getText();
     }

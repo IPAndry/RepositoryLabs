@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,16 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Credit extends AbstractPage {
 
-    private final Logger logger = LogManager.getLogger(Premium.class);
+    private final Logger logger = LogManager.getLogger(Credit.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
-    @FindBy(xpath = "//*[@id=\"body-header\"]/div/div/div[1]/div[2]/ul/li[2]/a")
+    @FindBy(xpath = "//a[@class = 'whitelink' and text()=' Кредит ']")
     private WebElement salesButton;
 
-    @FindBy(xpath = "//*[@id=\"content-inner-block\"]/div[2]/div/div/div[2]/div[1]/h1")
+    @FindBy(xpath = "//h1[text()='Покупка в кредит']")
     private WebElement salesFieldLocator;
-
 
     public Credit(WebDriver driver) {
         super(driver);
@@ -31,7 +28,7 @@ public class Credit extends AbstractPage {
         return this;
     }
 
-    public Credit GetCreditButton(){
+    public Credit getCreditButton(){
         salesButton.click();
         logger.info("Credit was opened");
         return this;

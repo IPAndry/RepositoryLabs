@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,14 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Lang extends AbstractPage {
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
+    private final Logger logger = LogManager.getLogger(Lang.class);
 
-    private final Logger logger = LogManager.getLogger(Premium.class);
-
-    @FindBy(xpath = "//*[@id=\"language-switcher\"]/div[3]/a")
+    @FindBy(xpath = "//a[@data-lang='ua']")
     private WebElement paymentButton;
 
-    @FindBy(xpath = "//*[@id=\"auth-block-main\"]/div/h2")
+    @FindBy(xpath = "//h2[@class='auth-b-title']")
     private WebElement paymentFieldLocator;
 
     public Lang(WebDriver driver) {
@@ -33,7 +31,7 @@ public class Lang extends AbstractPage {
         return this;
     }
 
-    public Lang UkrainianButton(){
+    public Lang ukrainianButton(){
         paymentButton.click();
         logger.info("Language changed");
         return this;

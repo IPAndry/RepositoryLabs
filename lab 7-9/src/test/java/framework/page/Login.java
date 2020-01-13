@@ -1,6 +1,6 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
-import by.bstu.unittesting.model.LoginModel;
+import framework.model.LoginModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -13,19 +13,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Login extends AbstractPage {
 
-    private final Logger logger = LogManager.getLogger(Premium.class);
+    private final Logger logger = LogManager.getLogger(Login.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
-    @FindBy(xpath = "//*[@id=\"popup_signin\"]/div[1]/div[1]/input")
+    @FindBy(xpath = "//*[@name='login']")
     private WebElement search;
 
-    @FindBy(xpath = "//*[@id=\"popup_signin\"]/div[1]/div[2]/div[1]/div[1]/input")
+    @FindBy(xpath = "//*[not(@tabindex='2') and @type='password']")
     private WebElement search1;
 
-    //*[@id="header_user_menu_parent"]/a
-
-    @FindBy(xpath = "//*[@id=\"popup_signin\"]/div[1]/div[1]/input")
+    @FindBy(xpath = "//*[@name='login']")
     private WebElement itemFieldLocator;
 
 
@@ -40,27 +36,27 @@ public class Login extends AbstractPage {
         return this;
     }
 
-    public Login LoginButton() {
-        WebElement search = driver.findElement(By.xpath("//*[@id=\"header_user_menu_parent\"]/a"));
+    public Login loginButton() {
+        WebElement search = driver.findElement(By.xpath("//*[@id='header_user_menu_parent']"));
         search.click();
         logger.info("Click Login");
         return this;
     }
 
-    public Login EmailField(LoginModel item) {
+    public Login emailField(LoginModel item) {
         search.sendKeys(item.getSearch());
         logger.info("Email input");
         return this;
     }
 
-    public Login PasswordField(LoginModel item) {
+    public Login passwordField(LoginModel item) {
         search1.sendKeys(item.getSearch());
         logger.info("Password input");
         return this;
     }
 
-    public Login EnterAccountButton() {
-        WebElement search = driver.findElement(By.xpath("//*[@id=\"popup_signin\"]/div[1]/div[2]/div[1]/div[2]/div/span/button"));
+    public Login enterAccountButton() {
+        WebElement search = driver.findElement(By.xpath("//button[@class='btn-link-i' and text()='Войти']"));
         search.click();
         logger.info("Login button");
         return this;
@@ -68,9 +64,8 @@ public class Login extends AbstractPage {
 
     public String getErrorText() {
         WebElement test = new WebDriverWait(driver, SECONDS_TO_LOAD)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"popup_signin\"]/div[1]/div[1]/input")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name='login']")));
 
         return itemFieldLocator.getText();
     }
-
 }

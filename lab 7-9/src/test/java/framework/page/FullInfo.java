@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,17 +16,11 @@ public class FullInfo extends AbstractPage {
 
     private final Logger logger = LogManager.getLogger(FullInfo.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
-    private final By orderStatusButton = By.className("//*[@id=\"panel\"]/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]");
-
-    @FindBy(xpath = "/html/body/div[4]/div/div[2]/div[1]/div/div[2]/div[1]/div/div/div[1]/div[3]/div/div[5]/ul/li[2]/span/img")
+    @FindBy(xpath = "//*[@class='g-i-list-icons']")
     private WebElement errorFieldLocator;
 
     @FindBy(xpath = "//*[@id=\"edit-order-number\"]")
     private WebElement originInput;
-
-    private final By searchButtonLocator = By.className("search_button");
 
     public FullInfo(WebDriver driver) {
         super(driver);
@@ -39,22 +33,22 @@ public class FullInfo extends AbstractPage {
         return this;
     }
 
-    public FullInfo NotebookButton() {
-        WebElement statusButton = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[1]/nav/div/ul/li[1]/a"));
+    public FullInfo notebookButton() {
+        WebElement statusButton = driver.findElement(By.xpath("//*[@id='2416']"));
         statusButton.click();
         logger.info("Clicked notebooks button and redirect on page notebooks");
         return this;
     }
 
-    public FullInfo AsusButton(){
-        WebElement button = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div/div/div[1]/div/div[1]/div[1]/div/ul/li[1]/a"));
+    public FullInfo asusButton(){
+        WebElement button = driver.findElement(By.xpath("//*[@href='https://rozetka.com.ua/notebooks/c80004/filter/producer=asus/']"));
         button.click();
         logger.info("Clicked ASUS button and redirect on page ASUS");
         return this;
     }
 
-    public FullInfo ListButton() throws InterruptedException {
-        WebElement button = driver.findElement(By.xpath("/html/body/div[4]/div/div[2]/div[1]/div/div[1]/div/div/div/div[1]/div/div[2]/div[2]/a"));
+    public FullInfo listButton() throws InterruptedException {
+        WebElement button = driver.findElement(By.xpath("//*[@id='filter_viewlist']"));
         button.click();
         logger.info("Clicked list button");
         Thread.sleep(5000);
@@ -63,7 +57,7 @@ public class FullInfo extends AbstractPage {
 
     public String getErrorText() {
         WebElement test1 = new WebDriverWait(driver, SECONDS_TO_LOAD)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#catalog_goods_block > div > div:nth-child(3) > div.g-i-list-middle-part > div > div.goods-item-pic > ul > li:nth-child(2) > span > img")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='g-i-list-icons']")));
         return errorFieldLocator.getText();
     }
 }

@@ -1,4 +1,4 @@
-package by.bstu.unittesting.service;
+package framework.service;
 
 import java.util.ResourceBundle;
 

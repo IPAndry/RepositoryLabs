@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,35 +10,33 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MainT extends AbstractPage {
+public class Logo extends AbstractPage {
 
-    private final Logger logger = LogManager.getLogger(Premium.class);
+    private final Logger logger = LogManager.getLogger(Logo.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
-    @FindBy(xpath = "//*[@id=\"auth-block-main\"]/div/h2")
+    @FindBy(xpath = "//*[@class='auth-b-title']")
     private WebElement deliveryFieldLocator;
 
-    public MainT(WebDriver driver) {
+    public Logo(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    public MainT openPage() {
+    public Logo openPage() {
         driver.navigate().to(PAGE_URL);
         logger.info("Main page opened");
         return this;
     }
 
-    public MainT NotebookButton() {
-        WebElement deliveryButton = driver.findElement(By.xpath("//*[@id=\"2416\"]/a"));
+    public Logo notebookButton() {
+        WebElement deliveryButton = driver.findElement(By.xpath("//*[@id='2416']"));
         deliveryButton.click();
         logger.info("Asus opend");
         return this;
     }
 
-    public MainT LogoButton() {
-        WebElement openManDeliveryButton = driver.findElement(By.xpath("//*[@id=\"body-header\"]/div/div/div[2]/div[1]/a"));
+    public Logo logoButton() {
+        WebElement openManDeliveryButton = driver.findElement(By.xpath("//*[@class='logo-link responsive-img logo-link-svg']"));
         openManDeliveryButton.click();
         logger.info("Main logo click");
         return this;
@@ -46,9 +44,8 @@ public class MainT extends AbstractPage {
 
     public String getErrorText() {
         WebElement test = new WebDriverWait(driver, SECONDS_TO_LOAD)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"auth-block-main\"]/div/h2")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='auth-b-title']")));
 
         return deliveryFieldLocator.getText();
     }
-
 }

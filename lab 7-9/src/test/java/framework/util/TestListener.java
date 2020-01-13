@@ -1,6 +1,6 @@
-package by.bstu.unittesting.util;
+package framework.util;
 
-import by.bstu.unittesting.driver.DriverSingleton;
+import framework.driver.DriverSingleton;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,33 +19,21 @@ public class TestListener implements ITestListener {
 
     private final Logger logger = LogManager.getRootLogger();
 
-    public void onTestStart(ITestResult iTestResult) {
+    public void onTestStart(ITestResult iTestResult) {}
 
-    }
-
-    public void onTestSuccess(ITestResult iTestResult) {
-
-    }
+    public void onTestSuccess(ITestResult iTestResult) {}
 
     public void onTestFailure(ITestResult iTestResult) {
         saveScreenshot();
     }
 
-    public void onTestSkipped(ITestResult iTestResult) {
+    public void onTestSkipped(ITestResult iTestResult) {}
 
-    }
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {}
 
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
+    public void onStart(ITestContext iTestContext) {}
 
-    }
-
-    public void onStart(ITestContext iTestContext) {
-
-    }
-
-    public void onFinish(ITestContext iTestContext) {
-
-    }
+    public void onFinish(ITestContext iTestContext) {}
 
     private void saveScreenshot() {
         File screenCapture = ((TakesScreenshot) DriverSingleton

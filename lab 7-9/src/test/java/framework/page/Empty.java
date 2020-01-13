@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,12 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Empty extends AbstractPage {
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
     private final Logger logger = LogManager.getLogger(Empty.class);
 
-    private static final By SEND_MESSAGE = By.xpath("//*[@id=\"comparison\"]/a");
-    private static final By ERROR_FIELD_LOCATION = By.xpath("//*[@id=\"comparison-popup\"]/div/h3");
+    private static final By SEND_MESSAGE = By.xpath("//*[@id='comparison']");
+    private static final By ERROR_FIELD_LOCATION = By.xpath("//*[@id='comparison-popup']");
 
     public Empty(WebDriver driver) {
         super(driver);
@@ -29,12 +27,11 @@ public class Empty extends AbstractPage {
         return this;
     }
 
-    public Empty CompareButton() {
+    public Empty compareButton() {
         driver.findElement(SEND_MESSAGE).click();
         logger.info("Sravnenie empty");
         return this;
     }
-
 
     public String getErrorText() {
         WebElement test = new WebDriverWait(driver, SECONDS_TO_LOAD)

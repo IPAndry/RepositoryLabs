@@ -1,7 +1,6 @@
-package by.bstu.unittesting.service;
+package framework.service;
 
-
-import by.bstu.unittesting.model.LoginModel;
+import framework.model.LoginModel;
 
 public class LoginField {
 

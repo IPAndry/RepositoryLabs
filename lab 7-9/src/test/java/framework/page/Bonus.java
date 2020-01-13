@@ -1,4 +1,4 @@
-package by.bstu.unittesting.page;
+package framework.page;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,27 +11,24 @@ public class Bonus extends AbstractPage {
 
     private final Logger logger = LogManager.getLogger(Bonus.class);
 
-    private static final String PAGE_URL = "https://rozetka.com.ua/";
-
     @FindBy(xpath = "//*[@id=\"program-loyalty-header_btn\"]")
     private WebElement installmentButton;
 
-    @FindBy(xpath = "//*[@id=\"program-loyalty-popup\"]/div/h3")
+    @FindBy(xpath = "//*[@class='header-popup-info-title' and text() = 'Бонусный счет']")
     private WebElement smartPhoneFieldLocator;
-
 
     public Bonus(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    public Bonus OpBonus() {
+    public Bonus openPage() {
         driver.navigate().to(PAGE_URL);
         logger.info("Bonus open");
         return this;
     }
 
-    public Bonus OpenBonus(){
+    public Bonus openBonus(){
         installmentButton.click();
         logger.info("Bonus opened");
         return this;

@@ -1,4 +1,4 @@
-package by.bstu.unittesting.model;
+package framework.model;
 
 public class LoginModel {
 
