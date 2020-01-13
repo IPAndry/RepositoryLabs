@@ -7,11 +7,11 @@ public class Autoriz extends Page {
 
     private static final String PAGE_URL = "https://rozetka.com.ua/";
 
-    private static final By NOTEBOOK = By.xpath("/html/body/header/div/div/div[1]/div[1]/div[2]/span[2]/a");
-    private static final By ASUS = By.xpath("/html/body/header/div/div/div[1]/div[1]/div[3]/div/div/div/form/div[1]/div[1]/input");
-    private static final By ASUS_ROG = By.xpath("/html/body/header/div/div/div[1]/div[1]/div[3]/div/div/div/form/div[1]/div[2]/div[1]/div[1]/input");
-    private static final By BUY_BUTTON = By.xpath("/html/body/header/div/div/div[1]/div[1]/div[3]/div/div/div/form/div[1]/div[2]/div[1]/div[2]/div/span/button");
-    private static final By ERROR_FIELD_LOCATION = By.xpath("/html/body/header/div/div/div[1]/div[1]/div[3]/div/div/div/form/div[1]/div[1]/div[2]/div/p");
+    private static final By LOGIN = By.xpath("//*[@id='header_user_menu_parent']");
+    private static final By EMAIL = By.xpath("//input[@class='input-text auth-input-text' and @name='login']");
+    private static final By PASSWORD = By.xpath("//*[@type='password' and not(@tabindex='2')]");
+    private static final By LOGIN_ACCOUNT = By.xpath("//*[@type='submit' and @name='auth_submit']");
+    private static final By ERROR_FIELD_LOCATION = By.xpath("//*[@class='auth-title h2']");
 
     public Autoriz(WebDriver driver) {
         super(driver);
@@ -22,26 +22,25 @@ public class Autoriz extends Page {
         return this;
     }
 
-    public Autoriz Click() {
-        waitUntilElementToBeClickable(NOTEBOOK).click();
+    public Autoriz login_Button() {
+        waitUntilElementToBeClickable(LOGIN).click();
         return this;
     }
 
-    public Autoriz Mail(String user){
-        driver.findElement(ASUS).sendKeys(user);
+    public Autoriz mail(String user){
+        driver.findElement(EMAIL).sendKeys(user);
         return this;
     }
 
-    public Autoriz Pass(String pass){
-        driver.findElement(ASUS_ROG).sendKeys(pass);
+    public Autoriz pass(String pass){
+        driver.findElement(PASSWORD).sendKeys(pass);
         return this;
     }
 
-    public Autoriz BuyButton(){
-        waitUntilElementToBeClickable(BUY_BUTTON).click();
+    public Autoriz loginAccount(){
+        waitUntilElementToBeClickable(LOGIN_ACCOUNT).click();
         return this;
     }
-
 
     public String getErrorText() {
         return waitUntilPresenceOfElement(ERROR_FIELD_LOCATION).getText();

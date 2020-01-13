@@ -63,7 +63,7 @@ namespace SeleniumWebDriver
             BrowserGoogleChromeSecondTest.Navigate().GoToUrl("https://rozetka.com.ua/");
 
             //2. Перейти в раздел "Ноутбуки и компьютеры".
-            IWebElement Razdel1 = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@id='2416']/a"));
+            IWebElement Razdel1 = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@id='2416']"));
             Razdel1.Click();
 
             //3. Перейти в раздел "Asus".
@@ -71,14 +71,14 @@ namespace SeleniumWebDriver
             Razdel2.Click();
 
             //4. Выбрать товар (прим. Asus ROG Strix) нажав на него.
-            IWebElement Notebook = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@id='catalog_goods_block']/div/div[1]/div[1]/div/div/div/div[3]/a"));
+            IWebElement Notebook = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@src='https://i1.rozetka.ua/goods/12940352/asus_90nr01l3_m02530_images_12940352268.jpg']"));
             Notebook.Click();
 
             Thread.Sleep(15000);
             //5. Нажать на кнопку "Купить". 
             try
             { 
-            IWebElement Purch = BrowserGoogleChromeSecondTest.FindElement(By.XPath("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[1]/div[2]/div/div[3]/div[1]/div[1]/div/div[1]/div[2]/div[2]/div/form/span/span/button"));
+            IWebElement Purch = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@class='btn-link-i' and @name='topurchases']"));
             Purch.Click();
             }
             catch
@@ -90,7 +90,7 @@ namespace SeleniumWebDriver
             //6. Ввести в поле количества большое значение (прим. 999999).
             try
             {
-                IWebElement Quantity = BrowserGoogleChromeSecondTest.FindElement(By.XPath("/html/body/div[1]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[3]/input"));
+                IWebElement Quantity = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@class='input-text cart-amount-input-text']"));
                 Quantity.SendKeys("99999999" + OpenQA.Selenium.Keys.Enter);
             }
             catch
@@ -100,7 +100,7 @@ namespace SeleniumWebDriver
             }
             Thread.Sleep(20000);
             //7. Нажать на кнопку "Оформить заказ"
-            IWebElement Buy = BrowserGoogleChromeSecondTest.FindElement(By.XPath("/html/body/div[1]/div/div[2]/div[2]/h2"));
+            IWebElement Buy = BrowserGoogleChromeSecondTest.FindElement(By.XPath("//*[@class='btn-link-i' and @id='popup-checkout']"));
             Buy.Click();
 
             Thread.Sleep(10000);

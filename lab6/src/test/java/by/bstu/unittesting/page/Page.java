@@ -12,8 +12,7 @@ public class Page {
 
     protected WebDriver driver;
 
-    private Page() {
-    }
+    private Page() {}
 
     public Page(WebDriver driver) {
         this.driver = driver;

@@ -31,21 +31,23 @@ public class Rozetka {
     @Test
     public void testIncorrectPhone() {
 
-        Autoriz callPhonePahe = new Autoriz(driver).openPage()
-                .Click()
-                .Mail("ipnadry@gmail.com")
-                .Pass("1q2w3eTetris")
-                .BuyButton();
+        Autoriz callPhonePahe = new Autoriz(driver)
+                .openPage()
+                .login_Button()
+                .mail("ipnadry@gmail.com")
+                .pass("1q2w3eTetris")
+                .loginAccount();
 
-        assertTrue(callPhonePahe.getErrorText().contains("недоступен для авторизации"));
+        assertTrue(callPhonePahe.getErrorText().contains("Вход в интернет-магазин"));
     }
     @Test
     public void testEnteringEmptyMessage() {
 
-        CityChange sendMessagePage = new CityChange(driver).openPage()
-                .Annoying()
-                .ChangeCity()
-                .InsertCity("БГТУ");
+        CityChange sendMessagePage = new CityChange(driver)
+                .openPage()
+                .annoying()
+                .changeCity()
+                .insertCity("БГТУ");
 
         assertTrue(sendMessagePage.getErrorText().contains("Город не найден."));
     }
